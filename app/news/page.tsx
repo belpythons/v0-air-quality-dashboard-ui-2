@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { getRecentArticles } from '@/lib/articles'
 import type { Article } from '@/lib/articles'
 
@@ -50,6 +51,17 @@ export default function NewsPage() {
               href={`/news/${article.slug}`}
               className="group flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:border-teal-300"
             >
+              {article.image && (
+                <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                  <Image
+                    src={article.image || "/placeholder.svg"}
+                    alt={article.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              )}
+
               {/* AQI Badge */}
               <div className={`border-b ${getAqiColor(article.aqiCategory)} px-4 py-3`}>
                 <div className="flex items-center justify-between">

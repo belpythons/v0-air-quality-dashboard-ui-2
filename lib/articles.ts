@@ -39,6 +39,7 @@ Residents, particularly those with respiratory conditions, are advised to limit 
     category: 'Air Quality News',
     tags: ['PM2.5', 'urban-pollution', 'health-alert'],
     author: 'Dr. Sarah Chen',
+    image: '/jakarta-cityscape-with-smog-and-pollution.jpg',
   },
   {
     id: '2',
@@ -62,6 +63,7 @@ Citizens of Bandung can generally engage in outdoor activities without significa
     category: 'Air Quality News',
     tags: ['good-quality', 'urban-green', 'success-story'],
     author: 'Prof. Andi Wijaya',
+    image: '/bandung-green-city-with-clear-blue-sky.jpg',
   },
   {
     id: '3',
@@ -85,6 +87,7 @@ Recommendations include maintaining awareness of daily AQI reports and adjusting
     category: 'Air Quality News',
     tags: ['moderate', 'monitoring', 'stability'],
     author: 'Ir. Budi Santoso',
+    image: '/samarinda-cityscape-with-monitoring-stations.jpg',
   },
   {
     id: '4',
@@ -108,6 +111,7 @@ The primary cause appears to be the combination of seasonal weather patterns and
     category: 'Air Quality News',
     tags: ['health-advisory', 'sensitive-groups', 'precaution'],
     author: 'Dr. Eka Putri',
+    image: '/surabaya-city-with-hazy-air-quality.jpg',
   },
   {
     id: '5',
@@ -131,6 +135,7 @@ Residents and visitors can engage in all outdoor activities without health conce
     category: 'Air Quality News',
     tags: ['coastal-advantage', 'good-quality', 'natural-patterns'],
     author: 'Dr. Reza Ahmad',
+    image: '/medan-coastal-city-with-clear-air.jpg',
   },
 ]
 
