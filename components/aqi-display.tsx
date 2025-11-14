@@ -12,12 +12,12 @@ interface AQIDisplayProps {
 
 export function AQIDisplay({ city, aqi, trend, trendValue }: AQIDisplayProps) {
   const getAqiColor = (aqi: number) => {
-    if (aqi <= 50) return { bg: 'bg-emerald-500', text: 'text-emerald-700 dark:text-emerald-300', label: 'Good' }
-    if (aqi <= 100) return { bg: 'bg-amber-500', text: 'text-amber-700 dark:text-amber-300', label: 'Moderate' }
-    if (aqi <= 150) return { bg: 'bg-orange-500', text: 'text-orange-700 dark:text-orange-300', label: 'Unhealthy for Sensitive Groups' }
-    if (aqi <= 200) return { bg: 'bg-red-500', text: 'text-red-700 dark:text-red-300', label: 'Unhealthy' }
-    if (aqi <= 300) return { bg: 'bg-purple-600', text: 'text-purple-700 dark:text-purple-300', label: 'Very Unhealthy' }
-    return { bg: 'bg-red-800', text: 'text-red-700 dark:text-red-300', label: 'Hazardous' }
+    if (aqi <= 50) return { bg: 'bg-emerald-500', text: 'text-emerald-700 dark:text-emerald-300', label: 'Baik' }
+    if (aqi <= 100) return { bg: 'bg-amber-500', text: 'text-amber-700 dark:text-amber-300', label: 'Sedang' }
+    if (aqi <= 150) return { bg: 'bg-orange-500', text: 'text-orange-700 dark:text-orange-300', label: 'Tidak Sehat untuk Kelompok Sensitif' }
+    if (aqi <= 200) return { bg: 'bg-red-500', text: 'text-red-700 dark:text-red-300', label: 'Tidak Sehat' }
+    if (aqi <= 300) return { bg: 'bg-purple-600', text: 'text-purple-700 dark:text-purple-300', label: 'Sangat Tidak Sehat' }
+    return { bg: 'bg-red-800', text: 'text-red-700 dark:text-red-300', label: 'Berbahaya' }
   }
 
   const colorInfo = getAqiColor(aqi)
@@ -28,7 +28,7 @@ export function AQIDisplay({ city, aqi, trend, trendValue }: AQIDisplayProps) {
     <Card className="p-8 bg-white dark:bg-slate-800 border-0 shadow-sm">
       <div className="flex flex-col items-center justify-center space-y-6">
         <div>
-          <p className="text-sm font-medium text-muted-foreground text-center">{city} Air Quality Index</p>
+          <p className="text-sm font-medium text-muted-foreground text-center">Indeks Kualitas Udara {city}</p>
         </div>
 
         {/* Circular Progress Ring */}
@@ -76,16 +76,16 @@ export function AQIDisplay({ city, aqi, trend, trendValue }: AQIDisplayProps) {
             {trend === 'down' && <ArrowDown className="w-4 h-4 text-emerald-500" />}
             {trend === 'stable' && <div className="w-4 h-4 text-gray-500">—</div>}
             <span className="text-xs text-muted-foreground">
-              {trend === 'up' && 'Worsening'}
-              {trend === 'down' && 'Improving'}
-              {trend === 'stable' && 'Stable'} ({trendValue}%)
+              {trend === 'up' && 'Memburuk'}
+              {trend === 'down' && 'Membaik'}
+              {trend === 'stable' && 'Stabil'} ({trendValue}%)
             </span>
           </div>
 
           {/* Last Updated */}
           <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground pt-2 border-t border-border">
             <Clock className="w-3 h-3" />
-            <span>Last updated: 5 mins ago</span>
+            <span>Terakhir diperbarui: 5 menit lalu</span>
           </div>
         </div>
       </div>

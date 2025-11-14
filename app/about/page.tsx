@@ -1,10 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Wind, Target, TrendingUp, Award, Users, Globe2, Heart, Zap } from 'lucide-react'
+import { Wind, Target, TrendingUp, Award, Users, Globe2, Heart, Leaf, Shield, Droplet } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import Link from 'next/link'
+import { HeaderNav } from '@/components/header-nav'
+import { Footer } from '@/components/footer'
 
 export default function AboutPage() {
   const [stats, setStats] = useState({
@@ -55,59 +57,131 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b border-border bg-white dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center">
-                <Wind className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold">AeroSense</span>
-            </div>
-            <Link href="/">
-              <Button variant="outline">Back to Home</Button>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <HeaderNav />
 
       {/* Hero Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-teal-50 via-white to-emerald-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <section className="pt-32 pb-20 px-6 bg-gradient-to-br from-teal-50 via-white to-emerald-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-balance">
-            Our Mission
+            Misi Kami
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed text-balance">
-            We believe everyone deserves to breathe clean air. AeroSense is dedicated to providing accurate, real-time air quality data to empower communities worldwide to make informed decisions about their health and environment.
+            Kami percaya setiap orang berhak menghirup udara bersih. AeroSense didedikasikan untuk menyediakan data kualitas udara real-time yang akurat untuk memberdayakan komunitas di seluruh dunia membuat keputusan yang tepat tentang kesehatan dan lingkungan mereka.
           </p>
+        </div>
+      </section>
+
+      {/* Image Cards Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4">Komitmen Kami</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Kami bekerja untuk menciptakan masa depan di mana udara bersih dapat diakses oleh semua orang
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="overflow-hidden group">
+              <div className="aspect-[4/3] bg-gradient-to-br from-teal-100 to-emerald-100 dark:from-teal-900 dark:to-emerald-900 relative overflow-hidden">
+                <img 
+                  src="/environmental-monitoring-technology-clean-air.jpg"
+                  alt="Environmental Monitoring"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="w-12 h-12 rounded-lg bg-teal-100 dark:bg-teal-900 flex items-center justify-center mb-4">
+                  <Shield className="w-6 h-6 text-teal-600 dark:text-teal-300" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Perlindungan Kesehatan</h3>
+                <p className="text-sm text-muted-foreground">
+                  Memberikan data akurat untuk melindungi kesehatan masyarakat dari polusi udara
+                </p>
+              </div>
+            </Card>
+
+            <Card className="overflow-hidden group">
+              <div className="aspect-[4/3] bg-gradient-to-br from-emerald-100 to-green-100 dark:from-emerald-900 dark:to-green-900 relative overflow-hidden">
+                <img 
+                  src="/green-sustainable-environment-nature.jpg"
+                  alt="Sustainable Environment"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900 flex items-center justify-center mb-4">
+                  <Leaf className="w-6 h-6 text-emerald-600 dark:text-emerald-300" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Keberlanjutan Lingkungan</h3>
+                <p className="text-sm text-muted-foreground">
+                  Mendukung upaya pelestarian lingkungan melalui pemantauan berkelanjutan
+                </p>
+              </div>
+            </Card>
+
+            <Card className="overflow-hidden group">
+              <div className="aspect-[4/3] bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900 dark:to-cyan-900 relative overflow-hidden">
+                <img 
+                  src="/clean-fresh-water-droplet-purification.jpg"
+                  alt="Clean Air Initiative"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-4">
+                  <Droplet className="w-6 h-6 text-blue-600 dark:text-blue-300" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Udara Bersih untuk Semua</h3>
+                <p className="text-sm text-muted-foreground">
+                  Mewujudkan akses universal terhadap informasi kualitas udara
+                </p>
+              </div>
+            </Card>
+
+            <Card className="overflow-hidden group md:col-span-3 lg:col-span-1">
+              <div className="aspect-[4/3] bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 relative overflow-hidden">
+                <img 
+                  src="/travel-adventure-exploration-tourism.jpg"
+                  alt="Travel with Air Quality"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900 flex items-center justify-center mb-4">
+                  <Globe2 className="w-6 h-6 text-purple-600 dark:text-purple-300" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Perjalanan Cerdas</h3>
+                <p className="text-sm text-muted-foreground">
+                  Rencanakan perjalanan Anda dengan informasi kualitas udara real-time
+                </p>
+              </div>
+            </Card>
+          </div>
         </div>
       </section>
 
       {/* Impact Section */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Impact</h2>
+          <h2 className="text-4xl font-bold text-center mb-12">Dampak Kami</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <Card className="p-8 text-center">
               <Globe2 className="w-12 h-12 text-teal-600 mx-auto mb-4" />
               <p className="text-4xl font-bold mb-2">{stats.citiesMonitored}+</p>
-              <p className="text-muted-foreground">Cities Monitored</p>
+              <p className="text-muted-foreground">Kota Dipantau</p>
             </Card>
             <Card className="p-8 text-center">
               <Users className="w-12 h-12 text-teal-600 mx-auto mb-4" />
               <p className="text-4xl font-bold mb-2">{stats.usersServed.toLocaleString()}+</p>
-              <p className="text-muted-foreground">Users Served</p>
+              <p className="text-muted-foreground">Pengguna Terlayani</p>
             </Card>
             <Card className="p-8 text-center">
               <TrendingUp className="w-12 h-12 text-teal-600 mx-auto mb-4" />
               <p className="text-4xl font-bold mb-2">{stats.dataPoints.toLocaleString()}+</p>
-              <p className="text-muted-foreground">Data Points</p>
+              <p className="text-muted-foreground">Titik Data</p>
             </Card>
             <Card className="p-8 text-center">
               <Award className="w-12 h-12 text-teal-600 mx-auto mb-4" />
               <p className="text-4xl font-bold mb-2">{stats.yearsActive}+</p>
-              <p className="text-muted-foreground">Years Active</p>
+              <p className="text-muted-foreground">Tahun Aktif</p>
             </Card>
           </div>
         </div>
@@ -116,14 +190,14 @@ export default function AboutPage() {
       {/* Timeline Section */}
       <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900/30">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Journey</h2>
+          <h2 className="text-4xl font-bold text-center mb-12">Perjalanan Kami</h2>
           <div className="space-y-8">
             {[
-              { year: '2020', title: 'Foundation', desc: 'AeroSense was founded with a vision to democratize air quality data.' },
-              { year: '2021', title: 'Expansion', desc: 'Expanded monitoring network to 20 cities across multiple regions.' },
-              { year: '2022', title: 'Innovation', desc: 'Launched real-time mobile app and advanced analytics platform.' },
-              { year: '2023', title: 'Recognition', desc: 'Received Environmental Technology Award for impact on public health.' },
-              { year: '2024', title: 'Global Reach', desc: 'Now monitoring 50+ cities with 100,000+ active users worldwide.' },
+              { year: '2020', title: 'Pendirian', desc: 'AeroSense didirikan dengan visi untuk mendemokratisasi data kualitas udara.' },
+              { year: '2021', title: 'Ekspansi', desc: 'Memperluas jaringan pemantauan ke 20 kota di berbagai wilayah.' },
+              { year: '2022', title: 'Inovasi', desc: 'Meluncurkan aplikasi seluler real-time dan platform analitik canggih.' },
+              { year: '2023', title: 'Pengakuan', desc: 'Menerima Penghargaan Teknologi Lingkungan untuk dampak terhadap kesehatan masyarakat.' },
+              { year: '2024', title: 'Jangkauan Global', desc: 'Kini memantau 50+ kota dengan 100.000+ pengguna aktif di seluruh dunia.' },
             ].map((milestone, index) => (
               <div key={index} className="flex gap-6 group">
                 <div className="flex flex-col items-center">
@@ -145,9 +219,9 @@ export default function AboutPage() {
       {/* Team Section */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-4">Meet Our Team</h2>
+          <h2 className="text-4xl font-bold text-center mb-4">Temui Tim Kami</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Our diverse team of scientists, engineers, and environmental advocates work tirelessly to bring you the most accurate air quality data.
+            Tim kami yang beragam terdiri dari ilmuwan, insinyur, dan advokat lingkungan yang bekerja tanpa lelah untuk memberikan data kualitas udara yang paling akurat.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((member, index) => (
@@ -172,7 +246,7 @@ export default function AboutPage() {
       {/* Partners Section */}
       <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900/30">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Partners</h2>
+          <h2 className="text-4xl font-bold text-center mb-12">Mitra Kami</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {partners.map((partner, index) => (
               <div 
@@ -187,27 +261,37 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-teal-600 to-emerald-600 text-white">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative py-32 px-6 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="/community-people-together-unity.jpg"
+            alt="Join the Movement"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-teal-600/95 to-emerald-600/95" />
+        </div>
+        <div className="relative max-w-4xl mx-auto text-center text-white">
           <Heart className="w-16 h-16 mx-auto mb-6" />
-          <h2 className="text-4xl font-bold mb-6">Join the Movement</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Help us build a cleaner, healthier future for everyone. Start monitoring your air quality today.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Bergabunglah dengan Gerakan</h2>
+          <p className="text-xl mb-8 opacity-90 leading-relaxed">
+            Bantu kami membangun masa depan yang lebih bersih dan sehat untuk semua orang. Mulai pantau kualitas udara Anda hari ini.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/#cities">
               <Button size="lg" variant="secondary" className="bg-white text-teal-600 hover:bg-slate-100">
-                Get Started
+                Mulai Sekarang
               </Button>
             </Link>
             <Link href="/news">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Read Our Blog
+                Baca Blog Kami
               </Button>
             </Link>
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   )
 }

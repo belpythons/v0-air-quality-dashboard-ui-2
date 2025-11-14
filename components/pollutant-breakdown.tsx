@@ -17,13 +17,13 @@ export function PollutantBreakdown({ pollutants }: PollutantBreakdownProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'safe':
-        return { bar: 'bg-emerald-500', zone: 'Safe Zone', textColor: 'text-emerald-700 dark:text-emerald-300' }
+        return { bar: 'bg-emerald-500', zone: 'Zona Aman', textColor: 'text-emerald-700 dark:text-emerald-300' }
       case 'warning':
-        return { bar: 'bg-amber-500', zone: 'Warning Zone', textColor: 'text-amber-700 dark:text-amber-300' }
+        return { bar: 'bg-amber-500', zone: 'Zona Peringatan', textColor: 'text-amber-700 dark:text-amber-300' }
       case 'danger':
-        return { bar: 'bg-red-500', zone: 'Danger Zone', textColor: 'text-red-700 dark:text-red-300' }
+        return { bar: 'bg-red-500', zone: 'Zona Bahaya', textColor: 'text-red-700 dark:text-red-300' }
       default:
-        return { bar: 'bg-slate-500', zone: 'Unknown', textColor: 'text-slate-700' }
+        return { bar: 'bg-slate-500', zone: 'Tidak Diketahui', textColor: 'text-slate-700' }
     }
   }
 
@@ -31,7 +31,7 @@ export function PollutantBreakdown({ pollutants }: PollutantBreakdownProps) {
 
   return (
     <Card className="p-6 bg-white dark:bg-slate-800 border-0 shadow-sm">
-      <h3 className="text-lg font-semibold text-foreground mb-6">Pollutant Breakdown</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-6">Rincian Polutan</h3>
 
       <div className="space-y-8">
         {pollutants.map((pollutant) => {
@@ -44,11 +44,11 @@ export function PollutantBreakdown({ pollutants }: PollutantBreakdownProps) {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-semibold text-foreground">{pollutant.name}</p>
-                  <p className="text-xs text-muted-foreground mt-1">Current: {pollutant.current} µg/m³</p>
+                  <p className="text-xs text-muted-foreground mt-1">Saat Ini: {pollutant.current} µg/m³</p>
                 </div>
                 <div className={`text-right ${statusInfo.textColor}`}>
                   <p className="font-semibold text-sm">{statusInfo.zone}</p>
-                  <p className="text-xs opacity-75">Limit: {pollutant.whoLimit} µg/m³</p>
+                  <p className="text-xs opacity-75">Batas WHO: {pollutant.whoLimit} µg/m³</p>
                 </div>
               </div>
 
@@ -93,15 +93,15 @@ export function PollutantBreakdown({ pollutants }: PollutantBreakdownProps) {
       <div className="mt-8 pt-6 border-t border-border grid grid-cols-3 gap-4 text-xs">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded bg-emerald-500" />
-          <span className="text-muted-foreground">Safe</span>
+          <span className="text-muted-foreground">Aman</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded bg-amber-500" />
-          <span className="text-muted-foreground">Warning</span>
+          <span className="text-muted-foreground">Peringatan</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded bg-red-500" />
-          <span className="text-muted-foreground">Danger</span>
+          <span className="text-muted-foreground">Bahaya</span>
         </div>
       </div>
     </Card>

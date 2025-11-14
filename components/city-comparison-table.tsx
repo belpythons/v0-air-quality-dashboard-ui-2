@@ -61,7 +61,7 @@ export function CityComparisonTable({ cities, onViewDetails }: CityComparisonTab
 
   return (
     <Card className="p-6 bg-white dark:bg-slate-800 border-0 shadow-sm">
-      <h3 className="text-lg font-semibold text-foreground mb-6">City Comparison</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-6">Perbandingan Kota</h3>
 
       <div className="overflow-x-auto">
         <table className="w-full">
@@ -69,7 +69,7 @@ export function CityComparisonTable({ cities, onViewDetails }: CityComparisonTab
             <tr className="border-b border-border">
               <th className="text-left py-3 px-4 font-semibold text-sm text-muted-foreground">
                 <button className="flex items-center gap-2 hover:text-foreground transition-colors" onClick={() => handleSort('name')}>
-                  City
+                  Kota
                   <SortIcon columnKey="name" />
                 </button>
               </th>
@@ -81,18 +81,18 @@ export function CityComparisonTable({ cities, onViewDetails }: CityComparisonTab
               </th>
               <th className="text-left py-3 px-4 font-semibold text-sm text-muted-foreground">
                 <button className="flex items-center gap-2 hover:text-foreground transition-colors" onClick={() => handleSort('temp')}>
-                  Temperature
+                  Suhu
                   <SortIcon columnKey="temp" />
                 </button>
               </th>
               <th className="text-left py-3 px-4 font-semibold text-sm text-muted-foreground">
                 <button className="flex items-center gap-2 hover:text-foreground transition-colors" onClick={() => handleSort('humidity')}>
-                  Humidity
+                  Kelembapan
                   <SortIcon columnKey="humidity" />
                 </button>
               </th>
               <th className="text-left py-3 px-4 font-semibold text-sm text-muted-foreground">Status</th>
-              <th className="text-center py-3 px-4 font-semibold text-sm text-muted-foreground">Action</th>
+              <th className="text-center py-3 px-4 font-semibold text-sm text-muted-foreground">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -115,7 +115,7 @@ export function CityComparisonTable({ cities, onViewDetails }: CityComparisonTab
                     className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors text-sm font-medium text-foreground"
                   >
                     <Eye className="w-4 h-4" />
-                    View
+                    Lihat
                   </button>
                 </td>
               </tr>

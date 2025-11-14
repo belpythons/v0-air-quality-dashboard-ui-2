@@ -36,14 +36,14 @@ export function WeatherIntegration({
   }
 
   const getAqiCorrelation = (humidity: number, windSpeed: number): string => {
-    if (windSpeed > 15) return 'High wind helps disperse pollutants'
-    if (humidity > 80) return 'High humidity can trap pollutants'
-    return 'Normal conditions'
+    if (windSpeed > 15) return 'Angin kencang membantu menyebarkan polutan'
+    if (humidity > 80) return 'Kelembapan tinggi dapat menjebak polutan'
+    return 'Kondisi normal'
   }
 
   return (
     <Card className="p-6 bg-white dark:bg-slate-800 border-0 shadow-sm">
-      <h3 className="text-lg font-semibold text-foreground mb-6">Current Weather</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-6">Cuaca Saat Ini</h3>
 
       {/* Main Weather Display */}
       <div className="flex items-start justify-between mb-8 pb-8 border-b border-border">
@@ -60,7 +60,7 @@ export function WeatherIntegration({
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <Droplets className="w-4 h-4 text-blue-500" />
-            <span className="text-xs text-muted-foreground font-medium">Humidity</span>
+            <span className="text-xs text-muted-foreground font-medium">Kelembapan</span>
           </div>
           <p className="text-2xl font-semibold text-foreground">{humidity}%</p>
           <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
@@ -72,7 +72,7 @@ export function WeatherIntegration({
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <Wind className="w-4 h-4 text-teal-500" />
-            <span className="text-xs text-muted-foreground font-medium">Wind Speed</span>
+            <span className="text-xs text-muted-foreground font-medium">Kecepatan Angin</span>
           </div>
           <p className="text-2xl font-semibold text-foreground">{windSpeed} km/h</p>
           <p className="text-xs text-muted-foreground">Direction: NE</p>
@@ -82,7 +82,7 @@ export function WeatherIntegration({
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <Eye className="w-4 h-4 text-amber-500" />
-            <span className="text-xs text-muted-foreground font-medium">Visibility</span>
+            <span className="text-xs text-muted-foreground font-medium">Jarak Pandang</span>
           </div>
           <p className="text-2xl font-semibold text-foreground">{visibility} km</p>
         </div>
@@ -91,7 +91,7 @@ export function WeatherIntegration({
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <Gauge className="w-4 h-4 text-purple-500" />
-            <span className="text-xs text-muted-foreground font-medium">Pressure</span>
+            <span className="text-xs text-muted-foreground font-medium">Tekanan</span>
           </div>
           <p className="text-2xl font-semibold text-foreground">{pressure} mb</p>
         </div>
@@ -99,7 +99,7 @@ export function WeatherIntegration({
 
       {/* AQI Correlation */}
       <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4">
-        <p className="text-xs font-medium text-foreground mb-2">Air Quality Correlation</p>
+        <p className="text-xs font-medium text-foreground mb-2">Korelasi Kualitas Udara</p>
         <p className="text-sm text-muted-foreground">{getAqiCorrelation(humidity, windSpeed)}</p>
       </div>
     </Card>

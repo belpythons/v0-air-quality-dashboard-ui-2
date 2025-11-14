@@ -2,13 +2,12 @@
 
 import { useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { Navbar } from '@/components/navbar'
-import { Sidebar } from '@/components/sidebar'
 import { AQIDisplay } from '@/components/aqi-display'
 import { WeatherIntegration } from '@/components/weather-integration'
 import { PollutantBreakdown } from '@/components/pollutant-breakdown'
 import { CityComparisonTable } from '@/components/city-comparison-table'
 import { HealthAdvisory } from '@/components/health-advisory'
+import { DataVisualization } from '@/components/data-visualization'
 
 const cityData = {
   samarinda: {
@@ -85,52 +84,43 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="flex h-screen bg-background">
-      {/* Sidebar */}
-      <Sidebar selectedCity={cityName} onCitySelect={(city) => router.push(`/dashboard/${city.toLowerCase()}`)} />
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="p-6 space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold text-foreground mb-2">Dasbor Kualitas Udara {cityName}</h1>
+          <p className="text-muted-foreground">Pemantauan real-time dan rekomendasi kesehatan</p>
+        </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Navbar */}
-        <Navbar onAqiRangeChange={() => {}} />
+        <div>
+          <CityComparisonTable cities={allCitiesData} onViewDetails={handleViewDetails} />
+        </div>
 
-        {/* Dashboard Content */}
-        <main className="flex-1 overflow-auto bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-          <div className="p-6 space-y-6">
-            {/* Page Header */}
-            <div>
-              <h1 className="text-3xl font-bold text-foreground mb-2">{cityName} Air Quality Dashboard</h1>
-              <p className="text-muted-foreground">Real-time monitoring and health recommendations</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <AQIDisplay city={cityName} aqi={data.aqi} trend={data.trend} trendValue={data.trendValue} />
-              <div className="md:col-span-2">
-                <WeatherIntegration
-                  city={cityName}
-                  temp={data.temp}
-                  humidity={data.humidity}
-                  windSpeed={data.windSpeed}
-                  visibility={data.visibility}
-                  pressure={data.pressure}
-                  condition={data.condition}
-                />
-              </div>
-            </div>
-
-            <div>
-              <PollutantBreakdown pollutants={data.pollutants} />
-            </div>
-
-            <div>
-              <CityComparisonTable cities={allCitiesData} onViewDetails={handleViewDetails} />
-            </div>
-
-            <div>
-              <HealthAdvisory aqi={data.aqi} city={cityName} />
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <AQIDisplay city={cityName} aqi={data.aqi} trend={data.trend} trendValue={data.trendValue} />
+          <div className="md:col-span-2">
+            <WeatherIntegration
+              city={cityName}
+              temp={data.temp}
+              humidity={data.humidity}
+              windSpeed={data.windSpeed}
+              visibility={data.visibility}
+              pressure={data.pressure}
+              condition={data.condition}
+            />
           </div>
-        </main>
+        </div>
+
+        <div>
+          <PollutantBreakdown pollutants={data.pollutants} />
+        </div>
+
+        <div>
+          <DataVisualization selectedCity={cityName} />
+        </div>
+
+        <div>
+          <HealthAdvisory aqi={data.aqi} city={cityName} />
+        </div>
       </div>
     </div>
   )

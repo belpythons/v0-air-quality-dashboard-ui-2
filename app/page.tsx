@@ -1,11 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChevronRight, Wind, Search, Globe2, MapPin, TrendingUp, Users, Building2, AlertTriangle, Zap } from 'lucide-react'
+import { ChevronRight, Globe2, MapPin, TrendingUp, Users, Building2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Search } from 'lucide-react'
 import Link from 'next/link'
 import { getCityRankings } from '@/lib/city-data'
+import { HeaderNav } from '@/components/header-nav'
+import { Footer } from '@/components/footer'
 
 const cities = [
   { name: 'Samarinda', aqi: 78, status: 'moderate' },
@@ -73,58 +76,20 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-foreground overflow-hidden">
-      {/* Animated gradient background */}
-      <div
-        className="fixed inset-0 opacity-30 dark:opacity-20 pointer-events-none"
-        style={{
-          background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(13, 148, 136, 0.1), transparent 80%)`,
-          transition: 'all 0.3s ease-out',
-        }}
-      />
-
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-border'
-            : 'bg-transparent'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center">
-              <Wind className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xl font-bold">AeroSense</span>
-          </div>
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#home" className="text-sm font-medium hover:text-teal-600 transition-colors">Home</a>
-            <Link href="/world-map" className="text-sm font-medium hover:text-teal-600 transition-colors">World Air Quality</Link>
-            <Link href="/about" className="text-sm font-medium hover:text-teal-600 transition-colors">About</Link>
-            <Link href="/news" className="text-sm font-medium hover:text-teal-600 transition-colors">Newsroom</Link>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" className="hidden md:flex">EN</Button>
-            <Link href="#cities">
-              <Button size="sm" className="bg-teal-600 hover:bg-teal-700 text-white">
-                Get Started
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <HeaderNav />
 
       <section className="relative pt-32 pb-20 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <div className="inline-block mb-6 px-4 py-2 rounded-full border border-border bg-slate-50/50 dark:bg-slate-900/50">
-            <span className="text-sm font-medium text-muted-foreground">Real-time Air Quality Monitoring</span>
+            <span className="text-sm font-medium text-muted-foreground">Pemantauan Kualitas Udara Real-time</span>
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-balance">
-            Know what you breathe
+            Ketahui apa yang Anda hirup
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed text-balance">
-            Track real-time air quality data from over 50 cities worldwide. Get personalized health recommendations and make informed decisions about your outdoor activities.
+            Lacak data kualitas udara real-time dari lebih dari 50 kota di seluruh dunia. Dapatkan rekomendasi kesehatan yang dipersonalisasi dan buat keputusan yang tepat tentang aktivitas luar ruangan Anda.
           </p>
 
           <div className="max-w-2xl mx-auto mb-12 relative">
@@ -132,7 +97,7 @@ export default function LandingPage() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <Input
                 type="text"
-                placeholder="Search for a city or location..."
+                placeholder="Cari kota atau lokasi..."
                 className="w-full h-14 pl-12 pr-4 text-lg rounded-xl border-2 border-border focus:border-teal-500 transition-colors"
                 value={searchQuery}
                 onChange={(e) => {
@@ -173,40 +138,22 @@ export default function LandingPage() {
             )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-border">
               <Globe2 className="w-8 h-8 text-teal-600 mx-auto mb-3" />
               <p className="text-3xl font-bold mb-1">{stats.citiesMonitored}+</p>
-              <p className="text-sm text-muted-foreground">Cities Monitored</p>
+              <p className="text-sm text-muted-foreground">Kota Dipantau</p>
             </div>
             <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-border">
               <Users className="w-8 h-8 text-teal-600 mx-auto mb-3" />
               <p className="text-3xl font-bold mb-1">{stats.usersServed.toLocaleString()}+</p>
-              <p className="text-sm text-muted-foreground">Users Served</p>
+              <p className="text-sm text-muted-foreground">Pengguna Terlayani</p>
             </div>
             <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-border">
               <TrendingUp className="w-8 h-8 text-teal-600 mx-auto mb-3" />
               <p className="text-3xl font-bold mb-1">{stats.dataPoints.toLocaleString()}+</p>
-              <p className="text-sm text-muted-foreground">Data Points Collected</p>
+              <p className="text-sm text-muted-foreground">Titik Data Dikumpulkan</p>
             </div>
-          </div>
-
-          {/* Floating cards animation */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            {[
-              { icon: Wind, label: 'Real-time Data', desc: 'Live AQI updates' },
-              { icon: AlertTriangle, label: 'Health Alerts', desc: 'Smart notifications' },
-              { icon: Zap, label: 'Fast Analytics', desc: 'Instant insights' },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-border hover:border-teal-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-              >
-                <item.icon className="w-6 h-6 text-teal-600 mx-auto mb-2" />
-                <p className="font-semibold text-sm">{item.label}</p>
-                <p className="text-xs text-muted-foreground">{item.desc}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -214,29 +161,29 @@ export default function LandingPage() {
       {/* Features Section */}
       <section className="py-20 px-6 bg-slate-50/50 dark:bg-slate-900/30">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Why AeroSense?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Mengapa AeroSense?</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
                 icon: Globe2,
-                title: 'Global Coverage',
-                description: 'Monitor air quality in cities worldwide with our extensive global network.',
+                title: 'Jangkauan Global',
+                description: 'Pantau kualitas udara di kota-kota di seluruh dunia dengan jaringan global kami yang luas.',
               },
               {
                 icon: Users,
-                title: 'User-Friendly Interface',
-                description: 'Designed for ease of use, our dashboard provides clear insights at a glance.',
+                title: 'Antarmuka Ramah Pengguna',
+                description: 'Dirancang untuk kemudahan penggunaan, dasbor kami memberikan wawasan yang jelas sekilas.',
               },
               {
                 icon: TrendingUp,
-                title: 'Trending Data',
-                description: 'Stay ahead of air quality trends with our advanced analytics tools.',
+                title: 'Data Tren',
+                description: 'Tetap unggul dari tren kualitas udara dengan alat analitik canggih kami.',
               },
               {
                 icon: Building2,
-                title: 'Community Support',
-                description: 'Join our community to share insights and stay informed about air quality improvements.',
+                title: 'Dukungan Komunitas',
+                description: 'Bergabunglah dengan komunitas kami untuk berbagi wawasan dan tetap terinformasi tentang peningkatan kualitas udara.',
               },
             ].map((feature, i) => (
               <div
@@ -255,7 +202,7 @@ export default function LandingPage() {
       {/* Cities Section */}
       <section id="cities" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Monitor East Kalimantan Cities</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Pantau Kota Kalimantan Timur</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {cities.map((city) => {
@@ -266,6 +213,11 @@ export default function LandingPage() {
               }
 
               const colors = statusColors[city.status as keyof typeof statusColors]
+              const statusLabels: Record<string, string> = {
+                good: 'Kualitas Udara Baik',
+                moderate: 'Kualitas Udara Sedang',
+                unhealthy: 'Kualitas Udara Tidak Sehat',
+              }
 
               return (
                 <Link href={`/dashboard/${city.name}`} key={city.name}>
@@ -274,9 +226,9 @@ export default function LandingPage() {
                       <h3 className="text-lg font-semibold">{city.name}</h3>
                       <span className={`text-2xl font-bold ${colors.text}`}>{city.aqi}</span>
                     </div>
-                    <p className={`text-sm mb-4 capitalize ${colors.text}`}>{city.status} Air Quality</p>
+                    <p className={`text-sm mb-4 ${colors.text}`}>{statusLabels[city.status]}</p>
                     <Button size="sm" variant="outline" className="w-full">
-                      View Dashboard <ChevronRight className="w-4 h-4 ml-2" />
+                      Lihat Dasbor <ChevronRight className="w-4 h-4 ml-2" />
                     </Button>
                   </div>
                 </Link>
@@ -287,11 +239,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 border-t border-border">
-        <div className="max-w-4xl mx-auto text-center text-muted-foreground text-sm">
-          <p>AeroSense © 2025 • Monitoring air quality for a healthier world</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

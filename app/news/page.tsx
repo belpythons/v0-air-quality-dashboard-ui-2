@@ -4,6 +4,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getRecentArticles } from '@/lib/articles'
 import type { Article } from '@/lib/articles'
+import { HeaderNav } from '@/components/header-nav'
+import { Footer } from '@/components/footer'
 
 const getAqiColor = (category: Article['aqiCategory']) => {
   const colors = {
@@ -18,11 +20,11 @@ const getAqiColor = (category: Article['aqiCategory']) => {
 
 const getCategoryLabel = (category: Article['aqiCategory']) => {
   const labels = {
-    good: 'Good',
-    moderate: 'Moderate',
-    'unhealthy-for-sensitive': 'Unhealthy for Sensitive',
-    unhealthy: 'Unhealthy',
-    hazardous: 'Hazardous',
+    good: 'Baik',
+    moderate: 'Sedang',
+    'unhealthy-for-sensitive': 'Tidak Sehat untuk Sensitif',
+    unhealthy: 'Tidak Sehat',
+    hazardous: 'Berbahaya',
   }
   return labels[category]
 }
@@ -32,12 +34,14 @@ export default function NewsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-slate-50">
+      <HeaderNav />
+
       {/* Header */}
-      <div className="border-b border-slate-200 bg-white">
+      <div className="pt-20 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-          <h1 className="font-sans text-4xl font-bold text-teal-900">Air Quality News</h1>
+          <h1 className="font-sans text-4xl font-bold text-teal-900">Berita Kualitas Udara</h1>
           <p className="mt-2 text-lg text-slate-600">
-            Latest updates on air quality across East Kalimantan cities
+            Pembaruan terbaru tentang kualitas udara di kota-kota Kalimantan Timur
           </p>
         </div>
       </div>
@@ -66,7 +70,7 @@ export default function NewsPage() {
               <div className={`border-b ${getAqiColor(article.aqiCategory)} px-4 py-3`}>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-semibold">AQI Score</p>
+                    <p className="text-sm font-semibold">Skor AQI</p>
                     <p className="text-2xl font-bold">{article.aqiScore}</p>
                   </div>
                   <div className="text-right">
@@ -80,7 +84,7 @@ export default function NewsPage() {
                 {/* Location & Date */}
                 <div className="mb-3 flex items-center justify-between text-xs text-slate-500">
                   <span className="font-medium text-teal-700">{article.location}</span>
-                  <span>{new Date(article.date).toLocaleDateString()}</span>
+                  <span>{new Date(article.date).toLocaleDateString('id-ID')}</span>
                 </div>
 
                 {/* Title */}
@@ -106,7 +110,7 @@ export default function NewsPage() {
 
               {/* Author */}
               <div className="border-t border-slate-200 bg-slate-50 px-4 py-2">
-                <p className="text-xs text-slate-600">By {article.author}</p>
+                <p className="text-xs text-slate-600">Oleh {article.author}</p>
               </div>
             </Link>
           ))}
@@ -115,10 +119,13 @@ export default function NewsPage() {
         {/* Empty State */}
         {articles.length === 0 && (
           <div className="flex flex-col items-center justify-center py-20">
-            <p className="text-lg text-slate-600">No articles found</p>
+            <p className="text-lg text-slate-600">Tidak ada artikel ditemukan</p>
           </div>
         )}
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }

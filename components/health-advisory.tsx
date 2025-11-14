@@ -52,11 +52,11 @@ export function HealthAdvisory({ aqi, city }: HealthAdvisoryProps) {
   const CurrentIcon = currentAdvice.icon
 
   const getAqiStatus = () => {
-    if (aqi <= 50) return { text: 'Good - Safe for all activities', color: 'text-emerald-700 dark:text-emerald-300' }
-    if (aqi <= 100) return { text: 'Moderate - Sensitive groups should limit activity', color: 'text-amber-700 dark:text-amber-300' }
-    if (aqi <= 150) return { text: 'Unhealthy for Sensitive Groups - Avoid prolonged outdoor activity', color: 'text-orange-700 dark:text-orange-300' }
-    if (aqi <= 200) return { text: 'Unhealthy - Everyone should limit outdoor activity', color: 'text-red-700 dark:text-red-300' }
-    return { text: 'Hazardous - Stay indoors', color: 'text-purple-700 dark:text-purple-300' }
+    if (aqi <= 50) return { text: 'Baik - Aman untuk semua aktivitas', color: 'text-emerald-700 dark:text-emerald-300' }
+    if (aqi <= 100) return { text: 'Sedang - Kelompok sensitif sebaiknya membatasi aktivitas', color: 'text-amber-700 dark:text-amber-300' }
+    if (aqi <= 150) return { text: 'Tidak Sehat untuk Kelompok Sensitif - Hindari aktivitas luar ruangan yang lama', color: 'text-orange-700 dark:text-orange-300' }
+    if (aqi <= 200) return { text: 'Tidak Sehat - Semua orang sebaiknya membatasi aktivitas luar ruangan', color: 'text-red-700 dark:text-red-300' }
+    return { text: 'Berbahaya - Tetap di dalam ruangan', color: 'text-purple-700 dark:text-purple-300' }
   }
 
   const status = getAqiStatus()
@@ -65,7 +65,7 @@ export function HealthAdvisory({ aqi, city }: HealthAdvisoryProps) {
     <Card className="p-6 bg-white dark:bg-slate-800 border-0 shadow-sm">
       <div className="space-y-6">
         <div>
-          <h3 className="text-lg font-semibold text-foreground mb-2">Health Advisory - {city}</h3>
+          <h3 className="text-lg font-semibold text-foreground mb-2">Saran Kesehatan - {city}</h3>
           <p className={`text-sm font-medium ${status.color}`}>{status.text}</p>
         </div>
 
@@ -81,9 +81,9 @@ export function HealthAdvisory({ aqi, city }: HealthAdvisoryProps) {
                   : 'border-transparent text-muted-foreground hover:text-foreground'
               }`}
             >
-              {tab === 'general' && 'General'}
-              {tab === 'sensitive' && 'Sensitive Groups'}
-              {tab === 'elderly' && 'Elderly'}
+              {tab === 'general' && 'Umum'}
+              {tab === 'sensitive' && 'Kelompok Sensitif'}
+              {tab === 'elderly' && 'Lansia'}
             </button>
           ))}
         </div>
